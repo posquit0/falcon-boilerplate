@@ -12,6 +12,7 @@ FROM python:3.6-alpine
 MAINTAINER posquit0.bj@gmail.com
 
 # Set the working directory
+RUN mkdir /app
 WORKDIR /app
 
 # Install app dependencies
