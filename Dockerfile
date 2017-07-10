@@ -19,7 +19,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Add sources to workspace
-COPY . /app
+COPY . .
 
 # Set and expose application port
 EXPOSE 8000
