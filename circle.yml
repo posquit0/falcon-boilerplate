@@ -1,0 +1,37 @@
+## Customize the test machine
+machine:
+  python:
+    version: 3.6.1
+
+  timezone:
+    Asia/Seoul
+
+  services:
+    - docker
+
+  # Add some environment variables
+  environment:
+    APP_ENV: test
+    DOCKER_REPOSITORY: posquit0/falcon-boilerplate
+
+## Customize dependencies
+dependencies:
+  cache_directories:
+    - ~/.docker
+  pre:
+    - docker info
+    - |
+      if [[ -e ~/.docker/image.tar ]]; then
+        docker load -i ~/.docker/image.tar
+      fi
+  override:
+    - pip install -r dev-requirements.txt
+    - docker build --rm=false -t $DOCKER_REPOSITORY .
+  post:
+    - mkdir -p ~/.docker; docker save $DOCKER_REPOSITORY > ~/.docker/image.tar
+
+## Customize test commands
+test:
+  override:
+    - tox
+  post:
