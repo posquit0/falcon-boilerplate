@@ -33,5 +33,5 @@ dependencies:
 ## Customize test commands
 test:
   override:
-    - tox
+    - nosetests
   post:
