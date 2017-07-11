@@ -33,5 +33,6 @@ dependencies:
 ## Customize test commands
 test:
   override:
-    - py.test
+    - py.test --cov=app
   post:
+    - coveralls
