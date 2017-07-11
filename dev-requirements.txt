@@ -1,4 +1,5 @@
 tox
 coverage==4.4.1
-nose==1.3.7
+py==1.4.34
+pytest==3.1.3
 -r requirements.txt
